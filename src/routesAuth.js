@@ -1,84 +1,38 @@
-import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import icons from "./constants/icons.js";
-import Home from "./screens/home/home.jsx";
-import Favoritos from "./screens/favoritos/favoritos.jsx";
-import Pedidos from "./screens/pedidos/pedidos.jsx";
-import Perfil from "./screens/perfil/perfil.jsx";
-const Tab = createBottomTabNavigator();
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Principal from "./screens/principal/principal.jsx";
+import Cardapio from "./screens/cardapio/cardapio.jsx"
+import Busca from "./screens/busca/busca.jsx";
+import DetalheProduto from "./screens/detalhe-produto/detalhe-produto.jsx";
+import DetalhePedido from "./screens/detalhe-pedido/detalhe-pedido.jsx";
+const Stack = createNativeStackNavigator();
 
-export default function routesAuth() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused, color, size }) => {
-              return (
-                <Image
-                  source={icons.abaHome}
-                  style={{ width: 25, height: 25, opacity: focused ? 1 : 0.3 }}
-                />
-              );
-            },
-          }}
-        />
-        <Tab.Screen
-          name="favoritos"
-          component={Favoritos}
-          options={{
-            title: "Favoritos",
-            headerTitleAlign: "center",
-            headerShadowVisible: false,
-            tabBarIcon: (focused) => {
-              return (
-                <Image
-                  source={icons.abaFavorito}
-                  style={{ width: 25, height: 25, opacity: focused ? 1 : 0.3 }}
-                />
-              );
-            },
-          }}
-        />
-        <Tab.Screen
-          name="pedidos"
-          component={Pedidos}
-          options={{
-            title: "Pedidos",
-            headerTitleAlign: "center",
-            headerShadowVisible: false,
-            tabBarIcon: (focused) => {
-              return (
-                <Image
-                  source={icons.abaPedido}
-                  style={{ width: 25, height: 25, opacity: focused ? 1 : 0.3 }}
-                />
-              );
-            },
-          }}
-        />
-        <Tab.Screen
-          name="perfil"
-          component={Perfil}
-          options={{
-            title: "Meu Perfil",
-            headerTitleAlign: "center",
-            headerShadowVisible: false,
-            tabBarIcon: (focused) => {
-              return (
-                <Image
-                  source={icons.abaPerfil}
-                  style={{ width: 25, height: 25, opacity: focused ? 1 : 0.3 }}
-                />
-              );
-            },
-          }}
-        />
-      </Tab.Navigator>
+function RoutesAuth() {
+    return <NavigationContainer>
+
+        <Stack.Navigator>
+
+            <Stack.Screen name="detalhe-pedido" component={DetalhePedido} options={{
+                headerShown: false
+            }} />
+            <Stack.Screen name="detalhe-produto" component={DetalheProduto} options={{
+                headerShown: false
+            }} />
+
+            <Stack.Screen name="principal" component={Principal} options={{
+                headerShown: false
+            }} />
+
+            <Stack.Screen name="cardapio" component={Cardapio} options={{
+                headerShown: false
+            }} />
+
+            <Stack.Screen name="busca" component={Busca} options={{
+                headerShown: false
+            }} />
+        </Stack.Navigator>
+
     </NavigationContainer>
-  );
 }
+
+export default RoutesAuth;

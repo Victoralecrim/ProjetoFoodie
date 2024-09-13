@@ -1,19 +1,21 @@
 import { FlatList, Image, Text, View } from "react-native";
-import { styles } from "./busca.style.js";
-import { restaurantes } from "../../constants/dados.js";
-import Restaurante from "../../components/restaurante/restaurante.jsx";
+import { pedidos } from "../../constants/dados.js";
 import icons from "../../constants/icons.js";
+import { styles } from "./aba-pedidos.style.js";
+import Pedido from "../../components/pedido/pedido.jsx";
 
-function Busca() {
+
+function AbaPedidos() {
     return <View style={styles.container}>
-        <FlatList data={restaurantes}
-            keyExtractor={(restaurante) => restaurante.id}
+        <FlatList data={pedidos}
+            keyExtractor={(ped) => ped.id}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => {
-                return <Restaurante nome={item.nome}
-                    endereco={item.endereco}
-                    logotipo={item.logotipo}
-                    icone={icons.favoritoFull} />
+                return <Pedido logotipo={item.logotipo}
+                    nome={item.nome}
+                    valor={item.vl_total}
+                    dt_pedido={item.dt_pedido}
+                    status={item.status} />
             }}
 
             contentContainerStyle={styles.containerList}
@@ -28,4 +30,4 @@ function Busca() {
     </View>
 }
 
-export default Busca;
+export default AbaPedidos;

@@ -5,7 +5,7 @@ export const styles = {
         flex: 1,
         backgroundColor: COLORS.white,
         paddingLeft: 12,
-        paddingRight: 12,
+        paddingRight: 12
     },
     containerList: {
         flexGrow: 1

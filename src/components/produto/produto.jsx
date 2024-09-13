@@ -12,7 +12,7 @@ export default function Produto(props) {
         <Text style={styles.descricao}>{props.descricao}</Text>
       </View>
 
-      <View style={styles.textos}>
+      <View>
         <Text style={styles.valor}>
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",

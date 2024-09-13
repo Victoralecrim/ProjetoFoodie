@@ -1,10 +1,10 @@
 import { FlatList, Image, Text, View } from "react-native";
-import { styles } from "./busca.style.js";
 import { restaurantes } from "../../constants/dados.js";
 import Restaurante from "../../components/restaurante/restaurante.jsx";
 import icons from "../../constants/icons.js";
+import { styles } from "./aba-favoritos.style.js";
 
-function Busca() {
+function AbaFavoritos() {
     return <View style={styles.container}>
         <FlatList data={restaurantes}
             keyExtractor={(restaurante) => restaurante.id}
@@ -13,7 +13,7 @@ function Busca() {
                 return <Restaurante nome={item.nome}
                     endereco={item.endereco}
                     logotipo={item.logotipo}
-                    icone={icons.favoritoFull} />
+                    icone={icons.remove} />
             }}
 
             contentContainerStyle={styles.containerList}
@@ -28,4 +28,4 @@ function Busca() {
     </View>
 }
 
-export default Busca;
+export default AbaFavoritos;
