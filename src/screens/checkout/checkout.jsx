@@ -1,10 +1,15 @@
 import { Image, TouchableOpacity, View, Text, FlatList } from "react-native";
-import { styles } from "./detalhe-pedido.style.js";
+import { styles } from "./checkout.style.js";
 import icons from "../../constants/icons.js";
 import { pedido } from "../../constants/dados.js";
 import Produto from "../../components/produto/produto.jsx";
+import Button from "../../components/button/button.jsx";
 
-function DetalhePedido(props) {
+function Checkout(props) {
+  function ClickDelete() {
+    alert("OK");
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -19,6 +24,7 @@ function DetalhePedido(props) {
               nome={item.nome}
               descricao={item.descricao}
               valor={item.vlTotal}
+              onClickDelete={ClickDelete}
             />
           );
         }}
@@ -44,8 +50,12 @@ function DetalhePedido(props) {
           <Text style={styles.total}>R$ 71,00</Text>
         </View>
       </View>
+
+      <View style={styles.conatinerBtn}>
+        <Button texto="Finalizar Pedido" />
+      </View>
     </View>
   );
 }
 
-export default DetalhePedido;
+export default Checkout;
